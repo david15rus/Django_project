@@ -1,18 +1,18 @@
 from django.urls import path
 
-from products.views import products, product_to_basket, product_off_basket
+from products.views import ProductsView, product_to_basket, product_off_basket
 
 app_name = 'products'
 
 urlpatterns = [
-    path('', products, name='index'),
+    path('', ProductsView.as_view(), name='index'),
 
     path('category/<int:category_id>',
-         products,
+         ProductsView.as_view(),
          name='category'),
 
     path('page/<int:page>/',
-         products,
+         ProductsView.as_view(),
          name='paginator'),
 
     path('user/add/<int:product_id>',
