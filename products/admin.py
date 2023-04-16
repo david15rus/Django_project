@@ -1,6 +1,6 @@
 from django.contrib import admin
-from products.models import Category, Products, Basket
 
+from products.models import Basket, Category, Products
 
 admin.site.register(Category)
 
@@ -17,7 +17,3 @@ class BasketAdmin(admin.TabularInline):
     model = Basket
     fields = ('product', 'quantity')
     extra = 0
-
-
-
-
