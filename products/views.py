@@ -16,10 +16,12 @@ class ProductsView(TitleCommonMixin, ListView):
     model = Products
     template_name = 'products/products.html'
     paginate_by = 3
+    context_object_name = 'products'
     title = 'Store - Каталог'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductsView, self).get_context_data()
+        context['category_id'] = self.kwargs.get('category_id')
         context['categories'] = Category.objects.all()
         return context
 
